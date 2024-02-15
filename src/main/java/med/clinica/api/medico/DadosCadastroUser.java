@@ -1,0 +1,24 @@
+package med.clinica.api.medico;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import med.clinica.api.endereco.Endereco;
+
+public record DadosCadastroUser(
+        @NotBlank String nome,
+        @NotBlank(message = "nao veio email")
+        @Email
+        String email,
+        @NotBlank(message = "precisa de crm")
+        @Pattern( regexp = "\\d{4,6}")
+        String crm,
+        @NotNull
+        Especialidade especialidade,
+        @NotNull
+        Endereco endereco ) {
+
+}
